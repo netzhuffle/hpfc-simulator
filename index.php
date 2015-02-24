@@ -87,6 +87,12 @@
 			-webkit-animation: loading 6s infinite linear;
 			animation: loading 6s linear infinite;
 		}
+		
+		.hidden {
+			display: inline-block;
+			width: 0.1px;
+			overflow: hidden;
+		}
 	</style>
 	<h1 hidden>Headline Generator</h1>
 	<script src="scripts.js"></script>

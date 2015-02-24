@@ -105,7 +105,7 @@ function printHeadline() {
 		return headline.indexOf(headlinePart2) != -1
 	}));
 	
-	document.getElementById('headlines').innerHTML += '<hgroup><h3>' + headlinePart1 + '</h3><h2>' + headlinePart2 + '</h2></hgroup>';
+	document.getElementById('headlines').innerHTML += '<hgroup><h3>' + headlinePart1 + '<span class="hidden">:</span></h3><h2>' + headlinePart2 + '</h2></hgroup>';
 }
 
 var followersXHR = new XMLHttpRequest();
