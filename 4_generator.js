@@ -1,14 +1,16 @@
-var followers = require('./followers.json');
-var headlines = require('./headlines.json');
-var headlineGenerator = require('./generator_functions');
+var parameterType = process.argv[2];
+var parameterValue = process.argv[3];
 
-function printHeadline() {
-	var headlineParts = headlineGenerator.getHeadline(followers, headlines);
+var followers = require('./followers/' + parameterType + parameterValue + '.json');
+var generator = require('./generator_functions');
+
+function printPost(isFirstPost) {
+	var post = generator.getPost(followers, isFirstPost);
 
 	console.log();
-	console.log(headlineParts[0] + ':\n', headlineParts[1]);
+	console.log(post);
 }
 
-printHeadline();
-printHeadline();
-printHeadline();
+printPost(true);
+printPost(false);
+printPost(false);

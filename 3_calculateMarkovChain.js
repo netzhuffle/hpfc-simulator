@@ -1,6 +1,11 @@
+'use strict';
+
 var fs = require('fs');
 
-var tokens = require('./tokens.json');
+var parameterType = process.argv[2];
+var parameterValue = process.argv[3];
+
+var tokens = require('./tokens/' + parameterType + parameterValue + '.json');
 
 var followers = {};
 function addFollowers(token, nextToken) {
@@ -18,6 +23,7 @@ function addFollowers(token, nextToken) {
 
 var lastTokens = [];
 tokens.forEach(function(headline) {
+	let lastToken;
 	headline.forEach(function(token, index) {
 		if (token != 'EOF') {
 			addFollowers(token, headline[index + 1]);
@@ -36,9 +42,8 @@ tokens.forEach(function(headline) {
 			}
 		}
 	});
-	lastToken = null;
 });
-fs.writeFile('followers.json', JSON.stringify(followers));
+fs.writeFile('followers/' + parameterType + parameterValue + '.json', JSON.stringify(followers));
 
 console.log('===========');
-console.log(tokens.length + ' Schlagzeilen analysiert.');
+console.log(tokens.length + ' Posts analysiert.');
